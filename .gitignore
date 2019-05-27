@@ -5,6 +5,7 @@ project.lock.json
 /debug/
 /staging/
 /Packages/
+Modules/
 *.nuget.props
 
 # dotnet cli install/uninstall scripts
