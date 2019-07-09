@@ -1,4 +1,4 @@
-Set-Alias mkdir     Set-LocationAfterMake
+#Set-Alias mkdir     Set-LocationAfterMake
 
 # LS.MSH 
 # Colorized LS function replacement 

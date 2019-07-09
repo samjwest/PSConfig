@@ -20,13 +20,13 @@ Set-Alias dir       Get-ChildItemColor -option AllScope -Force
 #==============================================================================
 $configfile = "C:\tools\cmder\vendor\conemu-maximus5\ConEmu.xml"
 $themedir = "C:\Source\Misc\Repos\ConEmu-Color-Themes\themes"
-$psdir = "C:\Users\Sam West\Documents\WindowsPowerShell"
+$psdir = "C:\Users\I222408\Documents\WindowsPowerShell"
 #Set-ExecutionPolicy remoteSigned -Scope CurrentUser
 
-Import-Module 'C:\tools\poshgit\dahlbyk-posh-git-9bda399\src\posh-git.psd1'
+Import-Module 'C:\tools\poshgit\posh-git\src\posh-git.psd1'
 Import-Module PSColor
 Import-Module oh-my-posh
-Set-Theme Avit
+Set-Theme Honukai
 
 #==============================================================================
 # Common Variables Start
@@ -36,8 +36,15 @@ $Jsh | add-member NoteProperty "ScriptPath" $(split-path -parent $MyInvocation.M
 $Jsh | add-member NoteProperty "ConfigPath" $(split-path -parent $Jsh.ScriptPath)
 $Jsh | add-member NoteProperty "UtilsRawPath" $(join-path $Jsh.ConfigPath "Utils")
 $Jsh | add-member NoteProperty "UtilsPath" $(join-path $Jsh.UtilsRawPath $env:PROCESSOR_ARCHITECTURE)
+$Jsh | add-member NoteProperty "UserPath" $(split-path -parent $Jsh.ConfigPath)
+$Jsh | add-member NoteProperty "DesktopPath" $(join-path $Jsh.UserPath "Desktop")
+$Jsh | add-member NoteProperty "BuildPath" $(join-path $Jsh.DesktopPath "Build")
+$Jsh | add-member NoteProperty "DeployPath" "C:\Source\Workspaces\ReleaseManagement\DevOps\NPSBuildScripts\Deployment"
 $Jsh | add-member NoteProperty "GoMap" @{}
 $Jsh | add-member NoteProperty "ScriptMap" @{}
+
+$host.PrivateData.ErrorBackgroundColor = "DarkMagenta"
+$host.PrivateData.ErrorForegroundColor = "Yellow"
 
 #==============================================================================
 # Functions 
@@ -159,6 +166,5 @@ pushd $Jsh.ScriptPath
 $Jsh.GoMap["ps"]        = $Jsh.ScriptPath
 $Jsh.GoMap["config"]    = $Jsh.ConfigPath
 $Jsh.GoMap["~"]         = "~"
-
-
-
+$Jsh.GoMap["build"]     = $Jsh.BuildPath
+$Jsh.GoMap["deploy"]     = $Jsh.DeployPath

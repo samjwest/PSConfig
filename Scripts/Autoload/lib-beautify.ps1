@@ -18,11 +18,11 @@ ForEach ($Extension in $CompressedList) {
 }
 
 ForEach ($Extension in $ExecutableList) {
-    $ColorTable.Add($Extension, "Blue")
+    $ColorTable.Add($Extension, "Cyan")
 }
 
 ForEach ($Extension in $TextList) {
-    $ColorTable.Add($Extension, "Cyan")
+    $ColorTable.Add($Extension, "Gray")
 }
 
 ForEach ($Extension in $DllPdbList) {
@@ -63,7 +63,8 @@ Function Get-ChildItemColor {
     ForEach ($Item in $Items) {
         $Color = Get-Color $Item
 
-        $Host.UI.RawUI.ForegroundColor = $Color
+        #Write-Host $Item -ForegroundColor $Color
+        $Host.UI.RawUI.ForegroundColor = $Color        
         $Item
         $Host.UI.RawUI.ForegroundColor = $OriginalForegroundColor
     }
