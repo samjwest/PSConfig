@@ -23,10 +23,10 @@ $themedir = "C:\Source\Misc\Repos\ConEmu-Color-Themes\themes"
 $psdir = "C:\Users\I222408\Documents\WindowsPowerShell"
 #Set-ExecutionPolicy remoteSigned -Scope CurrentUser
 
-Import-Module 'C:\tools\poshgit\posh-git\src\posh-git.psd1'
-Import-Module PSColor
-Import-Module oh-my-posh
-Set-Theme Sorin
+# Import-Module 'C:\tools\poshgit\posh-git\src\posh-git.psd1'
+# Import-Module PSColor
+# Import-Module oh-my-posh
+# Set-Theme Sorin
 
 #==============================================================================
 # Common Variables Start
@@ -44,8 +44,8 @@ $Jsh | add-member NoteProperty "DeployPath" $(join-path $Jsh.DesktopPath "Deploy
 $Jsh | add-member NoteProperty "GoMap" @{}
 $Jsh | add-member NoteProperty "ScriptMap" @{}
 
-$host.PrivateData.ErrorBackgroundColor = "DarkMagenta"
-$host.PrivateData.ErrorForegroundColor = "Yellow"
+# $host.PrivateData.ErrorBackgroundColor = "DarkMagenta"
+# $host.PrivateData.ErrorForegroundColor = "Yellow"
 
 #==============================================================================
 # Functions 
@@ -155,10 +155,10 @@ function Jsh.Run-Script([string] $name) {
 ### Load function / filter definition library
 ### ---------------------------------------------------------------------------
 
-Get-ChildItem "${psdir}\Scripts\Autoload\*.ps1" | %{ 
-    .$_
-    write-host "Loading library file:`t$($_.name)"
-  }
+# Get-ChildItem "${psdir}\Scripts\Autoload\*.ps1" | %{ 
+#     .$_
+#     write-host "Loading library file:`t$($_.name)"
+#   }
 
 
 pushd $Jsh.ScriptPath

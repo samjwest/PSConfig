@@ -1,0 +1,172 @@
+dir
+set-omptheme powerline
+exit
+get-ompplugin
+get-ompprofilesetting
+exit
+dir
+set-omptheme norm
+set-omptheme -Name:norm
+dir
+exit
+get-ompprofilesetting
+set-omptheme solarizeddark
+exit
+dir
+dir
+set-omptheme solarizeddark
+get-psreadlineoption
+update-module psreadline
+install-module psreadline -Force
+set-omptheme semisol
+dir
+set-omptheme powerline
+dir
+set-omptheme
+exit
+dir
+get-psreadlineoption
+set-omptheme semisol
+set-omptheme
+exit
+set-omptheme
+exit
+set-theme paradox
+dir
+set-them honukai
+set-theme honukai
+dir
+set-theme agnoster
+dir
+set-theme avit
+dir
+set-theme fish
+$themesettings
+show-themecolors
+$gitpromptsettings
+go build
+dir
+go deploy
+docker --version
+docker pull alpine
+docker images
+docker run -ti --name test alpine
+docker ps
+docker run -ti --name test alpine /bin/sh
+docker ps -a
+docker restart test
+docker attach test
+docker ps -a
+docker rm $(docker ps -aq)
+docker ps -a
+z:
+cd .\ReleaseMgmt\
+dir
+cd .\PushScripts\
+dir
+.\vendor-deploy.ps1
+z:
+cd .\ReleaseMgmt\
+dir
+cd .\PushScripts\
+dir
+.\NPS_SQLSortDeploy.ps1
+z:
+cd .\ReleaseMgmt\
+dir
+cd .\PushScripts\
+dir
+.\vendor-deploy.ps1
+go build
+dir
+.\copyfiles.ps1
+clear
+.\vendor-deploy.ps1
+go deploy
+cd ..\sql
+dir
+.\NPS_SQLSortDeploy.ps1
+go build
+dir
+z:
+dir
+cd .\ReleaseMgmt\
+cd .\PushScripts\
+.\vendor-deploy.ps1
+go deploy
+cd ..
+cd .\SQL\
+dir
+.\NPS_SQLSortDeploy.ps1
+import NGICRm
+import-module ngicrm
+import-module ngicrm.ps1
+import-module ngicrm.psm1
+go scripts
+go ps
+import-module ngicrm.psm1
+cd scipts
+dir
+cd scripts
+. .\NGICRm.psm1
+import-module ngicrm
+import-module .\ngicrm
+get-NGICAppPools PWVSWEPCI001
+dir
+install-module -Name AzurePipelinesPS
+install-apagent help
+install-apagent -help
+install-apagent --help
+install-apagent
+$ErrorActionPreference="Stop";If(-NOT ([Security.Principal.WindowsPrincipal][Security.Principal.WindowsIdentity]::GetCurrent() ).IsInRole( [Security.Principal.WindowsBuiltInRole] “Administrator”)){ throw "Run command in an administrator PowerShell prompt"};If($PSVersionTable.PSVersion -lt (New-Object System.Version("3.0"))){ throw "The minimum version of Windows PowerShell that is required by the script (3.0) does not match the currently running version of Windows PowerShell." };If(-NOT (Test-Path $env:SystemDrive\'azagent')){mkdir $env:SystemDrive\'azagent'}; cd $env:SystemDrive\'azagent'; for($i=1; $i -lt 100; $i++){$destFolder="A"+$i.ToString();if(-NOT (Test-Path ($destFolder))){mkdir $destFolder;cd $destFolder;break;}}; $agentZip="$PWD\agent.zip";$DefaultProxy=[System.Net.WebRequest]::DefaultWebProxy;$securityProtocol=@();$securityProtocol+=[Net.ServicePointManager]::SecurityProtocol;$securityProtocol+=[Net.SecurityProtocolType]::Tls12;[Net.ServicePointManager]::SecurityProtocol=$securityProtocol;$WebClient=New-Object Net.WebClient; $Uri='https://vstsagentpackage.azureedge.net/agent/2.155.1/vsts-agent-win-x64-2.155.1.zip';if($DefaultProxy -and (-not $DefaultProxy.IsBypassed($Uri))){$WebClient.Proxy= New-Object Net.WebProxy($DefaultProxy.GetProxy($Uri).OriginalString, $True);}; $WebClient.DownloadFile($Uri, $agentZip);Add-Type -AssemblyName System.IO.Compression.FileSystem;[System.IO.Compression.ZipFile]::ExtractToDirectory( $agentZip, "$PWD");.\config.cmd --deploymentgroup --deploymentgroupname "Sandbox" --agent $env:COMPUTERNAME --runasservice --work '_work' --url 'https://dev.azure.com/npsnatgen/' --projectname 'NPS'; Remove-Item $agentZip;
+exit
+dir
+.\config.cmd --deploymentgroup --deploymentgroupname "Sandbox" --agent $env:COMPUTERNAME --runasservice --windowsLogonAccount NGIC\ServAzureSQLDEV --windowsLogonPassword '3r#ri0TLIvF/TE' --url 'https://dev.azure.com/npsnatgen/' --projectname 'NPS' --unattended --auth pat --token 3yeqqelixhzakjqscilk4rsd77hvcd5h4wqldrvryiyjdvbyurwq --proxyurl http://proxy01.gmacinsurance.com:8080 --proxyusername "NGIC\ServAzureSQLDEV" --proxypassword "3r#ri0TLIvF/TE"
+go build
+cd ..
+dir
+git status
+git fetch
+git checkout master
+git pull
+go build
+dir
+go deploy
+dir
+.\vendor-deploy.ps1
+go build
+dir
+.\CopyFiles.ps1
+z:
+dir
+cd .\ReleaseMgmt\
+cd .\PushScripts\
+dir
+.\vendor-deploy.ps1
+cd ..
+cd buil
+cd build
+.\CopyFiles.ps1
+dir
+.\NPS_Deploy.ps1
+go deploy
+c:
+cd ..
+dir
+Install-RemoteAgent
+nslookup devnpsmq
+nslookup devnpsmq.nationalgeneral.com
+cd ..
+cd .\SQL\
+dir
+.\NPS_SQLSortDeploy.ps1
+install-remoteagent
+go deploy
+z:
+dir
+cd .\ReleaseMgmt\PushScripts\
+dir
+.\vendor-deploy.ps1
+install-remoteagent
+.\vendor-deploy.ps1
+telnet PWVPWEPL002:25

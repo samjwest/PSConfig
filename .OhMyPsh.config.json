@@ -1,0 +1,44 @@
+﻿{
+    "Theme":  null,
+    "pluginconfig_qod":  "",
+    "OMPRunCount":  28,
+    "pluginconfig_moduleupgrade":  "",
+    "QuoteDirectory":  "C:\\Program Files\\WindowsPowerShell\\Modules\\OhMyPsh\\0.0.7\\plugins\\qod\\src\\quotes.txt",
+    "ModuleAutoCleanFrequency":  8,
+    "PersonalFunctions":  [
+
+                          ],
+    "PSReadlinePersistantHistoryCount":  50,
+    "OMPDebug":  false,
+    "AutoLoadModules":  [
+                            "psgit"
+                        ],
+    "pluginconfig_psdefaultparams":  "\r\n    # A few example psdefaultparametervalues to start with\r\n    $Global:PSDefaultParameterValues.Clear()\r\n    #$Global:PSDefaultParameterValues.Add(\"*:Credential\",$Cred)     # Uncomment to always have -Credential be populated with $Cred\r\n    $Global:PSDefaultParameterValues.Add(\"Get-ChildItem:Force\",$True)\r\n    #$Global:PSDefaultParameterValues.Add(\"Receive-Job:Keep\",$True)\r\n    $Global:PSDefaultParameterValues.Add(\"Format-Table:AutoSize\",{if ($host.Name -eq \"ConsoleHost\"){$true}})\r\n    #$Global:PSDefaultParameterValues.Add(\"Send-MailMessage:To\",\"\u003cemailaddress\u003e\")\r\n    #$Global:PSDefaultParameterValues.Add(\"Send-MailMessage:SMTPServer\",\"mail.whatever.com\")\r\n    $Global:PSDefaultParameterValues.Add(\"Update-Help:Module\",\"*\")\r\n    $Global:PSDefaultParameterValues.Add(\"Update-Help:ErrorAction\",\"SilentlyContinue\")\r\n    $Global:PSDefaultParameterValues.Add(\"Test-Connection:Quiet\",$True)\r\n    $Global:PSDefaultParameterValues.Add(\"Test-Connection:Count\",\"1\")\r\n    #$Global:PSDefaultParameterValues.Add(\u0027Get-Help:ShowWindow\u0027,$true) # Uncomment to always have a pop-up window for help\r\n",
+    "AutoInstallModules":  true,
+    "Plugins":  [
+                    "banner",
+                    "ezout",
+                    "moduleclean",
+                    "moduleupgrade",
+                    "psdefaultparams",
+                    "psreadline",
+                    "qod"
+                ],
+    "pluginconfig_moduleclean":  "",
+    "pluginconfig_ezout":  "\r\n    $Global:OMPEZOutDefinitions = @{\r\n        File = @{\r\n            DefaultFileForeground = \u0027White\u0027\r\n            DefaultDirectoryForeground = \u0027Cyan\u0027\r\n            Patterns = @{\r\n                Hidden     = @{ Color = \u0027DarkGray\u0027; Pattern = \u0027^\\.\u0027 }\r\n                Code       = @{ Color = \u0027Magenta\u0027; Pattern = \u0027\\.(java|c|cpp|cs|js|css|html)$\u0027 }\r\n                Executable = @{ Color = \u0027Red\u0027; Pattern = \u0027\\.(exe|bat|cmd|py|pl|ps1|psm1|vbs|rb|reg)$\u0027 }\r\n                Text       = @{ Color = \u0027Yellow\u0027; Pattern = \u0027\\.(txt|cfg|conf|ini|csv|log|config|xml|yml|md|markdown)$\u0027 }\r\n                Compressed = @{ Color = \u0027Green\u0027; Pattern = \u0027\\.(zip|tar|gz|rar|jar|war)$\u0027 }\r\n            }\r\n        }\r\n        Service = @{\r\n            Default = @{ Color = \u0027White\u0027 }\r\n            Running = @{ Color = \u0027DarkGreen\u0027 }\r\n            Stopped = @{ Color = \u0027DarkRed\u0027 }\r\n            Starting = @{ Color = \u0027Yellow\u0027 }\r\n        }\r\n        Match = @{\r\n            Default    = @{ Color = \u0027White\u0027 }\r\n            Path       = @{ Color = \u0027White\u0027}\r\n            LineNumber = @{ Color = \u0027Yellow\u0027 }\r\n            Line       = @{ Color = \u0027Gray\u0027 }\r\n            Match      = @{ Color = \u0027Cyan\u0027 }\r\n        }\r\n        OMPStatus = @{\r\n            Loaded  = @{ Color = \u0027Green\u0027 }\r\n            Unloaded  = @{ Color = \u0027Red\u0027 }\r\n        }\r\n    }\r\n",
+    "OMPPluginRootPaths":  [
+                               "C:\\Program Files\\WindowsPowerShell\\Modules\\OhMyPsh\\0.0.7\\plugins"
+                           ],
+    "UnloadModulesOnExit":  true,
+    "pluginconfig_psreadline":  "\r\n    \u003c#\r\n        psreadline configuration\r\n    #\u003e\r\n    Set-PSReadLineOption -HistoryNoDuplicates\r\n    Set-PSReadlineOption -HistorySavePath (Get-OMPProfileSetting -Name \u0027PSReadlineHistoryPath\u0027)\r\n    Set-PSReadLineOption -HistorySearchCursorMovesToEnd\r\n    Set-PSReadLineOption -HistorySaveStyle SaveIncrementally\r\n    Set-PSReadLineOption -MaximumHistoryCount 4000\r\n    Set-PSReadlineOption -ShowToolTips:$true\r\n\r\n    Set-PSReadlineKeyHandler -Key \"Ctrl+Delete\"       -Function \"KillWord\"\r\n    Set-PSReadlineKeyHandler -Key \"Ctrl+Backspace\"    -Function \"BackwardKillWord\"\r\n    Set-PSReadlineKeyHandler -Key \"Shift+Backspace\"   -Function \"BackwardKillWord\"\r\n    Set-PSReadlineKeyHandler -Key \"UpArrow\"           -Function \"HistorySearchBackward\"\r\n    Set-PSReadlineKeyHandler -Key \"DownArrow\"         -Function \"HistorySearchForward\"\r\n    Set-PSReadlineKeyHandler -Key \"Tab\"               -Function \"MenuComplete\"\r\n    Set-PSReadlineKeyHandler -Chord \u0027Shift+Tab\u0027 -Function \"Complete\"\r\n    Set-PSReadlineKeyHandler -Key \"Ctrl+Q\"            -Function \"TabCompleteNext\"\r\n    Set-PSReadlineKeyHandler -Key \"Ctrl+Shift+Q\"      -Function \"TabCompletePrevious\"\r\n\r\n    Set-PSReadlineKeyHandler -Key F1 -BriefDescription CommandHelp -LongDescription \"Open the help window for the current command\" -ScriptBlock {\r\n        # Get current line(s) of input\r\n        $ast = $null\r\n        $cursor = $null\r\n        [Microsoft.PowerShell.PSConsoleReadLine]::GetBufferState([ref]$ast, [ref]$null, [ref]$null, [ref]$cursor)\r\n\r\n        # Find the current command, use Ast to find the currently processed command, even if we are currently typing parameters for it.\r\n        $commandAst = $ast.FindAll({\r\n                $node = $args[0]\r\n                $node -is [System.Management.Automation.Language.CommandAst] -and\r\n                $node.Extent.StartOffset -le $cursor -and\r\n                $node.Extent.EndOffset -ge $cursor\r\n            }, $true) | Select-Object -Last 1\r\n\r\n        # If we are in the process of typing a command ...\r\n        if ($commandAst -ne $null) {\r\n            # Get its name\r\n            $commandName = $commandAst.GetCommandName()\r\n            if ($commandName -ne $null) {\r\n                # Ensure it really is its name\r\n                $command = $ExecutionContext.InvokeCommand.GetCommand($commandName, \u0027All\u0027)\r\n                if ($command -is [System.Management.Automation.AliasInfo]) {\r\n                    $commandName = $command.ResolvedCommandName\r\n                }\r\n\r\n                # Get Help\r\n                if ($commandName -ne $null) {\r\n                    # Call help based on preference\r\n                    switch ($PSReadlineHelpPreference) {\r\n                        \"detail\" { Start-Process powershell.exe -ArgumentList \"-NoExit -Command Get-Help $commandName -Detailed\" }\r\n                        \"details\" { Start-Process powershell.exe -ArgumentList \"-NoExit -Command Get-Help $commandName -Detailed\" }\r\n                        \"example\" { Start-Process powershell.exe -ArgumentList \"-NoExit -Command Get-Help $commandName -Examples\" }\r\n                        \"examples\" { Start-Process powershell.exe -ArgumentList \"-NoExit -Command Get-Help $commandName -Examples\" }\r\n                        \"online\" { Get-Help $commandName -Online }\r\n                        default { Get-Help $commandName -Online }\r\n                    }\r\n                }\r\n            }\r\n        }\r\n    }\r\n",
+    "PSReadlineHistoryLoaded":  true,
+    "PSReadlineHistoryPath":  "C:\\Users\\I222408\\Documents\\WindowsPowerShell\\.powershell.history",
+    "ModuleAutoUpgradeFrequency":  7,
+    "OMPGitOutput":  "psgit",
+    "pluginconfig_banner":  "",
+    "OMPModuleInstallSplat":  {
+                                  "AllowClobber":  true,
+                                  "Scope":  "CurrentUser",
+                                  "Force":  true
+                              }
+}

@@ -37,14 +37,15 @@ $Jsh | add-member NoteProperty "ConfigPath" $(split-path -parent $Jsh.ScriptPath
 $Jsh | add-member NoteProperty "UtilsRawPath" $(join-path $Jsh.ConfigPath "Utils")
 $Jsh | add-member NoteProperty "UtilsPath" $(join-path $Jsh.UtilsRawPath $env:PROCESSOR_ARCHITECTURE)
 $Jsh | add-member NoteProperty "UserPath" $(split-path -parent $Jsh.ConfigPath)
-$Jsh | add-member NoteProperty "DesktopPath" $(join-path $Jsh.UserPath "Desktop")
+$Jsh | add-member NoteProperty "DesktopPath" $(join-path $env:USERPROFILE "Desktop")
 $Jsh | add-member NoteProperty "BuildPath" $(join-path $Jsh.DesktopPath "Build")
-$Jsh | add-member NoteProperty "DeployPath" "C:\Source\Workspaces\ReleaseManagement\DevOps\NPSBuildScripts\Deployment"
+$Jsh | add-member NoteProperty "DeployPath" $(join-path $Jsh.DesktopPath "Deploy")
+#$Jsh | add-member NoteProperty "DeployPath" "C:\Source\Workspaces\ReleaseManagement\DevOps\NPSBuildScripts\Deployment"
 $Jsh | add-member NoteProperty "GoMap" @{}
 $Jsh | add-member NoteProperty "ScriptMap" @{}
 
-$host.PrivateData.ErrorBackgroundColor = "DarkMagenta"
-$host.PrivateData.ErrorForegroundColor = "Yellow"
+#$host.PrivateData.ErrorBackgroundColor = "DarkMagenta"
+#$host.PrivateData.ErrorForegroundColor = "Yellow"
 
 #==============================================================================
 # Functions 
@@ -125,6 +126,39 @@ function Jsh.Run-Script([string] $name) {
     } else {
         write-output "$name is not a valid script location"
         write-output $Jsh.ScriptMap
+    }
+}
+
+## Detect if we are running powershell without a console.
+$_ISCONSOLE = $TRUE
+try {
+    [System.Console]::Clear()
+}
+catch {
+    $_ISCONSOLE = $FALSE
+}
+
+# Everything in this block is only relevant in a console. This keeps nonconsole based powershell sessions clean.
+if ($_ISCONSOLE) {
+    ##  Check SHIFT state ASAP at startup so we can use that to control verbosity :)
+    try {
+	Add-Type -Assembly PresentationCore, WindowsBase
+        if ([System.Windows.Input.Keyboard]::IsKeyDown([System.Windows.Input.Key]::LeftShift) -or [System.Windows.Input.Keyboard]::IsKeyDown([System.Windows.Input.Key]::RightShift)) {
+            $VerbosePreference = "Continue"
+        }
+    }
+    catch {
+        # Maybe this is a non-windows host?
+    }
+
+    ## Set the profile directory variable for possible use later
+    Set-Variable ProfileDir (Split-Path $MyInvocation.MyCommand.Path -Parent) -Scope Global -Option AllScope, Constant -ErrorAction SilentlyContinue
+
+    # Start OhMyPsh only if we are in a console
+    if ($Host.Name -eq 'ConsoleHost') {
+        if (Get-Module OhMyPsh -ListAvailable) {
+            Import-Module OhMyPsh
+        }
     }
 }
 
